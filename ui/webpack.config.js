@@ -1,12 +1,13 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: './src/landing.tsx',
   output: {
     path: path.join(__dirname, '/static/build/'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     libraryTarget: 'umd'
   },
   module: {
@@ -23,11 +24,10 @@ module.exports = {
     ]
   },
   devServer: {
-    host: '0.0.0.0',
-    publicPath: '/static/build/',
+    host: 'localhost',
     hot: true,
     open: true,
-    openPage: '/static/build'
+    writeToDisk: true
   },
   watchOptions: {
     poll: 1000
@@ -39,6 +39,9 @@ module.exports = {
       eslint: {
         files: './src/**/*'
       }
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
     })
   ]
 }
