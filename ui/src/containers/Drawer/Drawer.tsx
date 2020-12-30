@@ -1,7 +1,6 @@
 import React from 'react'
-import { Circle, Layer, Stage } from 'react-konva'
-
-const Wheel = () => <Circle x={200} y={100} radius={50} fill='#ccc' />
+import { Layer, Stage } from 'react-konva'
+import Wheel from './components/Wheel'
 
 export default function Drawer() {
   return (
