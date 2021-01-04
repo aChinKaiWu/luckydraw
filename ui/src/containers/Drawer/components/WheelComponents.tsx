@@ -44,25 +44,23 @@ const NEEDLE_SHADOW_BLUR = 15
 const NEEDLE_SHADOW_COLOR = '#000'
 
 export const WheelNeedle = () => (
-  <>
-    <Shape
-      sceneFunc={(context, shape) => {
-        context.beginPath()
-        context.moveTo(NEEDLE_CENTER.X - NEEDLE_RADIUS, NEEDLE_CENTER.Y)
-        context.arc(NEEDLE_CENTER.X, NEEDLE_CENTER.Y, NEEDLE_RADIUS, Math.PI, 2 * Math.PI, false)
-        context.lineTo(NEEDLE_TIP.X, NEEDLE_TIP.Y)
-        context.lineTo(NEEDLE_TIP.X - NEEDLE_RADIUS, NEEDLE_CENTER.Y)
-        context.moveTo(NEEDLE_CENTER.X - NEEDLE_CENTER_RADIUS, NEEDLE_CENTER.Y)
-        context.closePath()
-        context.fillStrokeShape(shape)
-      }}
-      fill={NEEDLE_COLOR}
-      stroke={NEEDLE_BORDER_COLOR}
-      strokeWidth={NEEDLE_BORDER_WIDTH}
-      shadowBlur={NEEDLE_SHADOW_BLUR}
-      shadowColor={NEEDLE_SHADOW_COLOR}
-    />
-  </>
+  <Shape
+    sceneFunc={(context, shape) => {
+      context.beginPath()
+      context.moveTo(NEEDLE_CENTER.X - NEEDLE_RADIUS, NEEDLE_CENTER.Y)
+      context.arc(NEEDLE_CENTER.X, NEEDLE_CENTER.Y, NEEDLE_RADIUS, Math.PI, 2 * Math.PI, false)
+      context.lineTo(NEEDLE_TIP.X, NEEDLE_TIP.Y)
+      context.lineTo(NEEDLE_TIP.X - NEEDLE_RADIUS, NEEDLE_CENTER.Y)
+      context.moveTo(NEEDLE_CENTER.X - NEEDLE_CENTER_RADIUS, NEEDLE_CENTER.Y)
+      context.closePath()
+      context.fillStrokeShape(shape)
+    }}
+    fill={NEEDLE_COLOR}
+    stroke={NEEDLE_BORDER_COLOR}
+    strokeWidth={NEEDLE_BORDER_WIDTH}
+    shadowBlur={NEEDLE_SHADOW_BLUR}
+    shadowColor={NEEDLE_SHADOW_COLOR}
+  />
 )
 
 export const WheelBack = () => <Circle x={WHEEL_CENTER.X} y={WHEEL_CENTER.Y} radius={RADIUS} fill={WHEEL_COLOR_BACK} />
