@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { RefObject } from 'react'
+import { Layer as LayerType } from 'konva/types/Layer'
 import { Circle, Layer, Ring, Shape } from 'react-konva'
 
 const COUNT = 8
@@ -121,9 +122,9 @@ export const WheelBack = () => (
   </Layer>
 )
 
-export const WheelFront = () => {
+export const WheelFront = ({ layerRef }: { layerRef: RefObject<LayerType> }) => {
   return (
-    <Layer>
+    <Layer ref={layerRef} x={WHEEL_CENTER.x} y={WHEEL_CENTER.y}>
       {_range.map((_, idx) => (
         <WheelFrontArc key={idx} start={START_DEG + idx * 2 * DEG} />
       ))}
@@ -139,8 +140,8 @@ const WheelFrontArc = ({ start }: { start: number }) => {
     <Shape
       sceneFunc={(context, shape) => {
         context.beginPath()
-        context.moveTo(WHEEL_CENTER.x, WHEEL_CENTER.y)
-        context.arc(WHEEL_CENTER.x, WHEEL_CENTER.y, RADIUS, startAngle, endAngle, false)
+        context.moveTo(0, 0)
+        context.arc(0, 0, RADIUS, startAngle, endAngle, false)
         context.closePath()
         context.fillStrokeShape(shape)
       }}
