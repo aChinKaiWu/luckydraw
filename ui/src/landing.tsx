@@ -1,5 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './containers/App'
+import { ApolloProvider } from '@apollo/client'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import App from './containers/App'
+import Client from './config/apolloClient'
+
+function Landing() {
+  return (
+    <ApolloProvider client={Client}>
+      <App />
+    </ApolloProvider>
+  )
+}
+
+ReactDOM.render(<Landing />, document.getElementById('root'))

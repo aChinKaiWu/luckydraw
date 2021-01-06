@@ -1,0 +1,24 @@
+@import '../mockVar.scss';
+
+.container {
+  position: absolute;
+  width: 100%;
+  background-color: $buttermilk;
+  font-family: $fontFamily;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  background-color: $salmonpink;
+  color: white;
+}
+
+.logo {
+  height: 1.2em;
+}

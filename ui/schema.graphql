@@ -1,0 +1,15 @@
+schema {
+  query: RootQueryType
+}
+
+type RootQueryType {
+  awards: [Award!]
+}
+
+type Award {
+  content: String!
+  id: ID!
+  price: Int!
+  providerName: String
+  winner: String
+}

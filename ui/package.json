@@ -7,6 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
     "start": "webpack serve  --config webpack.config.js --open 'google chrome'"
+    "apollo:compile": "mkdir -p ./src/__generated__ && apollo client:codegen ./src/__generated__/ --target=typescript --localSchemaFile=./schema.graphql --queries=./src/query/**/*.ts --outputFlat",
+    "apollo:watch": "npm run apollo:compile -- --watch"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "@types/webpack-dev-server": "^3.11.1",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "apollo": "^2.32.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "eslint": "^7.16.0",
@@ -46,6 +49,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "@apollo/client": "^3.3.6",
+    "graphql": "^15.4.0",
     "konva": "^7.2.2",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
