@@ -5,7 +5,7 @@ import { IFrame } from 'konva/types/types'
 import { Layer } from 'konva/types/Layer'
 import Wheel from './components/Wheel'
 
-const ANIMATION_TIME = 5000
+const ANIMATION_TIME = 10000
 const HALF_LIFE = ANIMATION_TIME / 2
 
 export default function Drawer() {
