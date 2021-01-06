@@ -43,6 +43,10 @@ module.exports = {
         options: {
           limit: 8192
         }
+      },
+      {
+        test: /\.(mp3)$/i,
+        loader: 'file-loader'
       }
     ]
   },

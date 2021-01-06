@@ -13,8 +13,8 @@ export default function App() {
         <Route exact path={routes.home} component={Home} />
         <Route exact path={routes.drawer} component={Drawer} />
         <Route exact path={routes.winner} component={Winner} />
-        <Route exact path={routePath.award} component={Award} />
-        <Redirect to={routePath.home} />
+        <Route exact path={routes.award} component={Award} />
+        <Redirect to={routes.home} />
       </Switch>
     </Router>
   )

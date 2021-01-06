@@ -4,7 +4,8 @@ const GIFS = [
   'https://media.giphy.com/media/l0HU20BZ6LbSEITza/giphy.gif',
   'https://media.giphy.com/media/xT4uQfHn1CUGyYsiiY/giphy.gif',
   'https://media.giphy.com/media/ckMFjYymC5KKI/giphy.gif',
-  'https://media.giphy.com/media/kG9YYO1O135YhX7qu7/giphy.gif'
+  'https://media.giphy.com/media/kG9YYO1O135YhX7qu7/giphy.gif',
+  'https://media.giphy.com/media/xT0xes1WIfLw0IfKqQ/giphy.gif'
 ]
 
 export const randomGif = () => {

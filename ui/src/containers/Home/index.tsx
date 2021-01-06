@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import routes from '../../constants/routes'
 
 const Home = () => {
+  const routesList = [routes.winner, routes.drawer, routes.award]
   return (
     <>
       <h1>Hello Lucky Draw</h1>
       <ul>
-        <li>
-          <Link to={routes.winner}>Winner</Link>
-        </li>
-        <li>
-          <Link to={routes.drawer}>Drawer</Link>
-        </li>
+        {routesList.map((route, index) => (
+          <li key={`route${index}`}>
+            <Link to={route}>{route}</Link>
+          </li>
+        ))}
       </ul>
     </>
   )

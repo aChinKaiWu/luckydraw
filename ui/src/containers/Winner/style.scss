@@ -1,7 +1,7 @@
 .winner {
   background-color: #ff8762;
   min-height: 100vh;
-  padding-top: 168px;
+  padding: 96px 16px;
   text-align: center;
 }
 
@@ -101,9 +101,6 @@
   }
 }
 
-.options_button {
-}
-
 .options_award {
   background-color: #ffc306;
   font-size: 36px;
@@ -112,4 +109,9 @@
 .options_donate {
   background-color: #ff9c7c;
   font-size: 18px;
+}
+
+.audioContainer {
+  height: 0;
+  overflow: hidden;
 }
