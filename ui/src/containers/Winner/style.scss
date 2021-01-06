@@ -1,0 +1,115 @@
+.winner {
+  background-color: #ff8762;
+  min-height: 100vh;
+  padding-top: 168px;
+  text-align: center;
+}
+
+.winner_gif_container {
+  display: inline-block;
+  width: 584px;
+  vertical-align: top;
+  height: auto;
+}
+
+.result {
+  display: inline-block;
+  width: 576px;
+  margin-left: 32px;
+}
+
+.result_award {
+  position: relative;
+  background-color: #ffc306;
+  height: 184px;
+  line-height: 184px;
+  color: white;
+  font-size: 128px;
+  border-radius: 8px;
+}
+
+.result_goldIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 165px;
+  height: auto;
+  transform: translate(50%, -50%);
+}
+
+.result_name {
+  margin-top: 24px;
+}
+
+.congratulation {
+  text-transform: uppercase;
+  span:last-child {
+    color: yellow !important;
+  }
+}
+
+.text_animation {
+  margin: 0;
+  font-size: 6em;
+  padding: 0;
+  color: white;
+  text-shadow: 0 0.1em 20px rgba(0, 0, 0, 1), 0.05em -0.03em 0 rgba(0, 0, 0, 1), 0.05em 0.005em 0 rgba(0, 0, 0, 1),
+    0em 0.08em 0 rgba(0, 0, 0, 1), 0.05em 0.08em 0 rgba(0, 0, 0, 1), 0px -0.03em 0 rgba(0, 0, 0, 1),
+    -0.03em -0.03em 0 rgba(0, 0, 0, 1), -0.03em 0.08em 0 rgba(0, 0, 0, 1), -0.03em 0 0 rgba(0, 0, 0, 1);
+  span {
+    transform: scale(0.9);
+    display: inline-block;
+  }
+  span:first-child {
+    animation: bop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+    font-size: 1.25em;
+  }
+  span:last-child {
+    animation: bopB 1s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards infinite alternate;
+    color: #ff0000;
+    font-size: 0.75em;
+  }
+
+  @keyframes bop {
+    0% {
+      transform: scale(0.9);
+    }
+    50%,
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bopB {
+    0% {
+      transform: scale(0.9);
+    }
+    80%,
+    100% {
+      transform: scale(1) rotateZ(-3deg);
+    }
+  }
+}
+
+.options {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  * {
+    margin-right: 32px;
+    margin-bottom: 32px;
+  }
+}
+
+.options_button {
+}
+
+.options_award {
+  background-color: #ffc306;
+  font-size: 36px;
+}
+
+.options_donate {
+  background-color: #ff9c7c;
+  font-size: 18px;
+}

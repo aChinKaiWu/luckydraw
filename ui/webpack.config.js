@@ -49,13 +49,12 @@ module.exports = {
   devServer: {
     host: 'localhost',
     hot: true,
-    open: true,
     writeToDisk: true
   },
   watchOptions: {
     poll: 1000
   },
-  resolve: { extensions: ['.tsx', '.ts', '.jsx', '.js'] },
+  resolve: { extensions: ['.tsx', '.ts', '.jsx', '.js', '.css', '.scss'] },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       async: false,
