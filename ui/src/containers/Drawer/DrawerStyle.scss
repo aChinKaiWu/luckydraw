@@ -1,10 +1,10 @@
 // temp variables
 $dark-yellow: #ffc700;
 $light-yellow: #ffeeb2;
-$margin: 20px 100px;
+$margin: 10vh 10vw;
 $font-size-large: 100vh/20;
-$inner-weight: 500vw;
-$animation-time: 10s;
+$inner-weight: 1000vw;
+$animation-time: 5s;
 
 // animation
 @keyframes slide {
@@ -12,7 +12,7 @@ $animation-time: 10s;
     transform: translateX(0);
   }
   to {
-    transform: translateX(-$inner-weight);
+    transform: translateX(-$inner-weight + 200vw);
   }
 }
 
@@ -40,7 +40,13 @@ $animation-time: 10s;
   background-color: $light-yellow;
   width: $inner-weight;
   height: 100vh;
-  animation: $animation-time linear 1s infinite running slide;
+  animation: $animation-time linear 0s infinite running slide;
+  & :nth-child(3n + 1) {
+    transform: translateY(-10vh);
+  }
+  & :nth-child(3n + 3) {
+    transform: translateY(10vh);
+  }
   & :nth-child(4n + 1) {
     font-size: $font-size-large;
   }
@@ -52,6 +58,12 @@ $animation-time: 10s;
   }
   & :nth-child(4n + 4) {
     font-size: $font-size-large * 4;
+  }
+  & :nth-child(5n + 1) {
+    transform: scale(1.2);
+  }
+  & :nth-child(5n + 3) {
+    transform: scale(0.8);
   }
 }
 

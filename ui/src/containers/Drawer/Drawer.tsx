@@ -1,13 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import Konva from 'konva'
 import { IFrame } from 'konva/types/types'
 import { Layer } from 'konva/types/Layer'
 import Wheel from './components/Wheel'
 import Slide from './components/Slide'
 import styles from '././DrawerStyle.scss'
+import routes from '../../constants/routes'
 
 const ANIMATION_TIME = 10000
 const HALF_LIFE = ANIMATION_TIME / 2
+const ANIMATION_SPEED_NUMBER = 250
 
 const MEMBERS = [
   'Chin-Kai Wu',
@@ -45,13 +48,19 @@ const MEMBERS = [
 ]
 
 export default function Drawer() {
+  const history = useHistory()
   const frontRef = useRef<Layer>(null)
+
+  useEffect(() => {
+    handleWheelRotation()
+    setTimeout(() => history.push(routes.winner), ANIMATION_TIME)
+  }, [frontRef, history])
 
   const handleWheelRotation = () => {
     const anim = new Konva.Animation((frame?: IFrame) => {
-      const speed = frame ? frame.time / 500 : 0
-      const speedDiff = speed < HALF_LIFE / 500 ? speed : ANIMATION_TIME / 500 - speed
-      frontRef.current?.rotate(speedDiff)
+      const speed = frame ? frame.time : 0
+      const speedDiff = speed < HALF_LIFE ? speed : ANIMATION_TIME - speed
+      frontRef.current?.rotate(speedDiff / ANIMATION_SPEED_NUMBER)
     }, frontRef.current?.getLayer())
 
     anim.start()
@@ -61,7 +70,6 @@ export default function Drawer() {
   return (
     <div className={styles.drawer}>
       <Slide memberList={MEMBERS} />
-      <button onClick={handleWheelRotation}>Start Rotation</button>
       <Wheel width={window.innerWidth} height={window.innerHeight} frontRef={frontRef} />
     </div>
   )
