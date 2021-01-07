@@ -47,9 +47,31 @@ const MEMBERS = [
   'Leon Chang'
 ]
 
+const FUNNY_WORDS = ['抽我抽我', '抽不到啊', '一抽入魂']
+
+const getRandomInt: (min: number, max: number) => number = (min, max) => {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+const randomShuffle: <T>(list: T[]) => T[] = (list) => {
+  if (list.length <= 1) return list
+
+  for (let i = 0; i < list.length; i++) {
+    const random = getRandomInt(i, list.length - 1)
+    const temp = list[random]
+    list[random] = list[i]
+    list[i] = temp
+  }
+
+  return list
+}
+
 export default function Drawer() {
   const history = useHistory()
   const frontRef = useRef<Layer>(null)
+  const itemList = randomShuffle<string>(MEMBERS.concat(FUNNY_WORDS))
 
   useEffect(() => {
     handleWheelRotation()
@@ -69,7 +91,7 @@ export default function Drawer() {
 
   return (
     <div className={styles.drawer}>
-      <Slide memberList={MEMBERS} />
+      <Slide itemList={itemList} />
       <Wheel width={window.innerWidth} height={window.innerHeight} frontRef={frontRef} />
     </div>
   )
