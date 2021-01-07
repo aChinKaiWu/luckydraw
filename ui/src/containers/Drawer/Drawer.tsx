@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import Konva from 'konva'
-import { Stage } from 'react-konva'
 import { IFrame } from 'konva/types/types'
 import { Layer } from 'konva/types/Layer'
 import Wheel from './components/Wheel'
@@ -25,9 +24,7 @@ export default function Drawer() {
   return (
     <>
       <button onClick={handleWheelRotation}>Start Rotation</button>
-      <Stage width={window.innerWidth} height={window.innerHeight}>
-        <Wheel frontRef={frontRef} />
-      </Stage>
+      <Wheel width={window.innerWidth} height={window.innerHeight} frontRef={frontRef} />
     </>
   )
 }
