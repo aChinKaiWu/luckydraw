@@ -1,0 +1,62 @@
+// temp variables
+$dark-yellow: #ffc700;
+$light-yellow: #ffeeb2;
+$margin: 20px 100px;
+$font-size-large: 100vh/20;
+$inner-weight: 500vw;
+$animation-time: 10s;
+
+// animation
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-$inner-weight);
+  }
+}
+
+// Drawer
+.drawer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// Wheel
+.wheel {
+  transform: translateY(-100vh);
+}
+
+// slide
+.slide {
+  background-color: $light-yellow;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide_inner {
+  background-color: $light-yellow;
+  width: $inner-weight;
+  height: 100vh;
+  animation: $animation-time linear 1s infinite running slide;
+  & :nth-child(4n + 1) {
+    font-size: $font-size-large;
+  }
+  & :nth-child(4n + 2) {
+    font-size: $font-size-large * 2;
+  }
+  & :nth-child(4n + 3) {
+    font-size: $font-size-large * 3;
+  }
+  & :nth-child(4n + 4) {
+    font-size: $font-size-large * 4;
+  }
+}
+
+.slide_item {
+  display: inline-block;
+  color: $dark-yellow;
+  margin: $margin;
+}

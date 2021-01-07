@@ -2,6 +2,7 @@ import React, { RefObject } from 'react'
 import { Stage } from 'react-konva'
 import { Layer } from 'konva/types/Layer'
 import { WheelBack, WheelCenter, WheelFront, WheelNeedle } from './WheelComponents'
+import styles from '../DrawerStyle.scss'
 
 export default function Wheel({
   width,
@@ -13,11 +14,13 @@ export default function Wheel({
   frontRef: RefObject<Layer>
 }) {
   return (
-    <Stage width={width} height={height}>
-      <WheelBack />
-      <WheelFront layerRef={frontRef} />
-      <WheelCenter />
-      <WheelNeedle />
-    </Stage>
+    <div className={styles.wheel}>
+      <Stage width={width} height={height}>
+        <WheelBack />
+        <WheelFront layerRef={frontRef} />
+        <WheelCenter />
+        <WheelNeedle />
+      </Stage>
+    </div>
   )
 }
