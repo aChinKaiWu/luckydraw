@@ -6,7 +6,7 @@ export default function Slide({ itemList }: { itemList: string[] }) {
     <div className={styles.slide}>
       <div className={styles.slide_inner}>
         {itemList.map((member, idx) => (
-          <div key={idx} className={styles.slide_item}>
+          <div key={`slideItem_${idx}`} className={styles.slide_item}>
             {member}
           </div>
         ))}
