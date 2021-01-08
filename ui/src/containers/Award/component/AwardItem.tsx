@@ -26,7 +26,7 @@ function AwardItem(props: Props) {
       {winner ? (
         <div className={style.winner}>{winner}</div>
       ) : (
-        <div className={style['winner--none']} onClick={handleGetWinner}>
+        <div className={style['winner--none']} onClick={() => handleGetWinner(props.award)}>
           抽 DRAW ガチャる
         </div>
       )}
