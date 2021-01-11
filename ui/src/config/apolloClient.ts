@@ -1,9 +1,8 @@
 import { ApolloClient, gql, InMemoryCache, makeVar } from '@apollo/client'
-// import { AwardData } from '@src/_generated_/AwardData'
 import { AwardData } from '@src/__generated__/AwardData'
 
 export const awardVar = makeVar<AwardData | undefined>(undefined)
-export const chosenOneVar = makeVar<any>({ id: '12345' })
+export const winnerVar = makeVar<any>({ id: '12345', name: 'Stanley' })
 
 const cache: InMemoryCache = new InMemoryCache({
   typePolicies: {
@@ -16,7 +15,7 @@ const cache: InMemoryCache = new InMemoryCache({
         },
         winner: {
           read() {
-            return chosenOneVar()
+            return winnerVar()
           }
         }
       }

@@ -1,9 +1,23 @@
 schema {
   query: RootQueryType
+  mutation: RootMutationType
+}
+
+#for temp
+type RootMutationType {
+  findWinner(awardId: String): Candidate
+}
+
+#for temp
+type Candidate {
+  id: ID!
+  name: String!
 }
 
 type RootQueryType {
   awards: [Award!]
+  curAward: Award
+  winner: Candidate
 }
 
 type Award {

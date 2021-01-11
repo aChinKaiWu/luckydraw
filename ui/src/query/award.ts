@@ -20,3 +20,12 @@ export const AWARD_LIST_QUERY = gql`
   }
   ${AwardFragment.detail}
 `
+
+export const CUR_AWARD_QUERY = gql`
+  query GetCurrentAward {
+    curAward @client {
+      ...AwardData
+    }
+  }
+  ${AwardFragment.detail}
+`

@@ -1,0 +1,74 @@
+// temp variables
+$dark-yellow: #ffc700;
+$light-yellow: #ffeeb2;
+$margin: 10vh 10vw;
+$font-size-large: 100vh/20;
+$inner-weight: 1000vw;
+$animation-time: 5s;
+
+// animation
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-$inner-weight + 150vw);
+  }
+}
+
+// Drawer
+.drawer {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// Wheel
+.wheel {
+  transform: translateY(-100vh);
+}
+
+// slide
+.slide {
+  background-color: $light-yellow;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide_inner {
+  background-color: $light-yellow;
+  width: $inner-weight;
+  height: 100vh;
+  animation: $animation-time linear 0s infinite running slide;
+  & :nth-child(3n + 1) {
+    transform: translateY(-10vh);
+  }
+  & :nth-child(3n + 3) {
+    transform: translateY(10vh);
+  }
+  & :nth-child(4n + 1) {
+    font-size: $font-size-large;
+  }
+  & :nth-child(4n + 2) {
+    font-size: $font-size-large * 2;
+  }
+  & :nth-child(4n + 3) {
+    font-size: $font-size-large * 3;
+  }
+  & :nth-child(4n + 4) {
+    font-size: $font-size-large * 4;
+  }
+  & :nth-child(5n + 1) {
+    transform: scale(1.2);
+  }
+  & :nth-child(5n + 3) {
+    transform: scale(0.8);
+  }
+}
+
+.slide_item {
+  display: inline-block;
+  color: $dark-yellow;
+  margin: $margin;
+}

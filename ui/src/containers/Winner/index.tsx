@@ -1,4 +1,6 @@
 import React from 'react'
+import { useReactiveVar } from '@apollo/client'
+import { winnerVar, awardVar } from '@src/config/apolloClient'
 import { useHistory } from 'react-router-dom'
 import classnames from 'classnames'
 import Button from '../../components/Button'
@@ -11,6 +13,10 @@ import routes from '../../constants/routes'
 const randomGifInstance = randomGif()
 
 const Winner = ({}) => {
+  const winner = useReactiveVar(winnerVar)
+  const curAward = useReactiveVar(awardVar)
+  const priceText = curAward?.content
+
   const gif = randomGifInstance.get()
   const history = useHistory()
   const onAward = () => {
@@ -22,12 +28,12 @@ const Winner = ({}) => {
         <img className={style.winner_gif_container} src={gif} alt='' />
         <div className={style.result}>
           <div className={style.result_award}>
-            <span>$10,000</span>
+            <div>{priceText && (priceText.length > 20 ? priceText.slice(0, 20) + '...' : priceText)}</div>
             <img className={style.result_goldIcon} src={goldIcon} alt='gold' />
           </div>
           <div className={style.result_name}>
             <h1 className={style.text_animation}>
-              <span>Jerry</span>
+              <span>{winner.name}</span>
               <span>Winner</span>
             </h1>
           </div>
