@@ -29,6 +29,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  div {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
 }
 
 .result_goldIcon {

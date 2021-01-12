@@ -28,7 +28,7 @@ const Winner = ({}) => {
         <img className={style.winner_gif_container} src={gif} alt='' />
         <div className={style.result}>
           <div className={style.result_award}>
-            <div>{priceText && (priceText.length > 20 ? priceText.slice(0, 20) + '...' : priceText)}</div>
+            <div>{priceText}</div>
             <img className={style.result_goldIcon} src={goldIcon} alt='gold' />
           </div>
           <div className={style.result_name}>
