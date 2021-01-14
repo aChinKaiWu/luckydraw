@@ -91,6 +91,7 @@ export default function Drawer() {
   const itemList = randomShuffle<string>(MEMBERS.concat(FUNNY_WORDS))
 
   useEffect(() => {
+    document.documentElement.scrollTop = 0
     handleWheelRotation()
     setTimeout(() => setReadyToMove((pre) => ({ ...pre, animationOver: true })), ANIMATION_TIME)
   }, [frontRef, history])
