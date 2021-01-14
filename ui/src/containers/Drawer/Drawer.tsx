@@ -94,7 +94,7 @@ export default function Drawer() {
     document.documentElement.scrollTop = 0
     handleWheelRotation()
     setTimeout(() => setReadyToMove((pre) => ({ ...pre, animationOver: true })), ANIMATION_TIME)
-  }, [frontRef, history])
+  }, [history])
 
   useEffect(() => {
     data?.curAward?.id && findWinner({ variables: { awardId: data?.curAward?.id } })
