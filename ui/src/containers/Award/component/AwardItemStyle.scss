@@ -41,29 +41,36 @@
   cursor: pointer;
 }
 
-@keyframes neon-shine {
-  0% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0;
-  }
-  100% {
-    background-color: $buttermilk;
-  }
+.donateContainer {
+  margin: 30px 0px;
+  width: 400px;
+  height: 200px;
+  position: relative;
+}
+
+.donateContainerCreate {
+  @extend .donateContainer;
+  transform-style: preserve-3d;
+  transition: 0.5s all ease;
+  transform: rotateY(180deg);
 }
 
 .donateContent {
   @extend .prize;
   height: 200px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.donateTitle {
+  @extend .donateContent;
+}
+
+.donateForm {
+  @extend .donateContent;
+  transform: rotateY(180deg);
 }
 
 .donateButton {
   @extend .winner;
-  // color: #fff;
-  // background-color: #fff;
-  // box-shadow: 0 0 5px rgba(255, 65, 65, 1), 0 0 10px rgba(255, 65, 65, 1), 0 0 20px rgba(255, 65, 65, 1),
-  //   0 0 40px rgba(255, 65, 65, 1);
-
-  // animation: neon-shine 2s linear infinite;
 }

@@ -24,31 +24,31 @@ const AwardForm = ({
   errors,
   onChange
 }: {
-  values: AwardCreationBody
+  values: AwardCreationBody | null
   errors: AwardCreationBody
   onChange: (data: AwardCreationBody) => void
 }) => {
   const handleChange = (name: string, value: any) => onChange({ ...values, [name]: value })
 
   return (
-    <div className={style.donateContent}>
+    <div className={style.donateForm}>
       <form>
         <Input
           name={AwardKey.Provider}
           label='乾爹乾媽'
-          value={values[AwardKey.Provider]}
+          value={values?.[AwardKey.Provider]}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
           name={AwardKey.Content}
-          value={values[AwardKey.Content]}
+          value={values?.[AwardKey.Content]}
           label='乾爹乾媽ㄉ心意'
           error={errors[AwardKey.Content]}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
           name={AwardKey.Price}
-          value={values[AwardKey.Price]}
+          value={values?.[AwardKey.Price]}
           label='お金'
           type='number'
           error={errors[AwardKey.Price] as string}
@@ -60,18 +60,28 @@ const AwardForm = ({
 }
 
 export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: AwardCreationBody) => void }) {
-  const [formValue, setFormValues] = React.useState<AwardCreationBody>({})
+  const [formValue, setFormValues] = React.useState<AwardCreationBody | null>(null)
   const [formErrors, setFormErrors] = React.useState<AwardCreationBody>({})
+
+  const onButtonClick = () => {
+    if (!formValue) {
+      setFormValues({})
+      return
+    }
+
+    handleSubmit()
+  }
 
   const handleSubmit = () => {
     const error: AwardCreationBody = { ...DEFAULT_ERROR }
 
     Object.values(AwardKey).forEach((key) => {
-      if (formValue[key]) delete error[key]
+      if (formValue?.[key]) delete error[key]
     })
 
     setFormErrors(error)
-    if (Object.values(error).length === 0) {
+
+    if (Object.values(error).length === 0 && formValue) {
       onCreatAward(formValue)
       return
     }
@@ -79,12 +89,14 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
 
   return (
     <div className={style.container}>
-      <div className={style.donateContent}>
-        <p>我要當乾爹</p>
-        <p>我要當乾媽</p>
+      <div className={formValue ? style.donateContainerCreate : style.donateContainer}>
+        <div className={style.donateTitle}>
+          <p>我要當乾爹</p>
+          <p>我要當乾媽</p>
+        </div>
+        <AwardForm values={formValue} errors={formErrors} onChange={setFormValues} />
       </div>
-      <AwardForm values={formValue} errors={formErrors} onChange={setFormValues} />
-      <div className={style.donateButton} onClick={handleSubmit}>
+      <div className={style.donateButton} onClick={onButtonClick}>
         捐 Donate 寄付
       </div>
     </div>
