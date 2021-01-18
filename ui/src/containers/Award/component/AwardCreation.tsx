@@ -4,17 +4,19 @@ import style from './AwardItemStyle.scss'
 
 enum AwardKey {
   Provider = 'provider',
-  Content = 'content'
+  Content = 'content',
+  Price = 'price'
 }
 
-interface AwardCreationBody {
+export interface AwardCreationBody {
   [AwardKey.Provider]?: string
   [AwardKey.Content]?: string
+  [AwardKey.Price]?: number | string
 }
 
 const DEFAULT_ERROR: AwardCreationBody = {
-  [AwardKey.Provider]: 'Provider Error',
-  [AwardKey.Content]: 'Content Error'
+  [AwardKey.Content]: 'Content Error',
+  [AwardKey.Price]: 'Price Error'
 }
 
 const AwardForm = ({
@@ -35,7 +37,6 @@ const AwardForm = ({
           name={AwardKey.Provider}
           label='乾爹乾媽'
           value={values[AwardKey.Provider]}
-          error={errors[AwardKey.Provider]}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
         <Input
@@ -45,12 +46,20 @@ const AwardForm = ({
           error={errors[AwardKey.Content]}
           onChange={(e) => handleChange(e.target.name, e.target.value)}
         />
+        <Input
+          name={AwardKey.Price}
+          value={values[AwardKey.Price]}
+          label='お金'
+          type='number'
+          error={errors[AwardKey.Price] as string}
+          onChange={(e) => handleChange(e.target.name, Number(e.target.value))}
+        />
       </form>
     </div>
   )
 }
 
-export default function AwardCreation() {
+export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: AwardCreationBody) => void }) {
   const [formValue, setFormValues] = React.useState<AwardCreationBody>({})
   const [formErrors, setFormErrors] = React.useState<AwardCreationBody>({})
 
@@ -63,7 +72,7 @@ export default function AwardCreation() {
 
     setFormErrors(error)
     if (Object.values(error).length === 0) {
-      console.log(formValue)
+      onCreatAward(formValue)
       return
     }
   }

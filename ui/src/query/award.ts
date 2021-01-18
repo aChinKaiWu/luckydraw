@@ -38,3 +38,12 @@ export const GIVE_UP_AWARD_QUERY = gql`
   }
   ${AwardFragment.detail}
 `
+
+export const ADD_AWARD = gql`
+  mutation CreateAward($content: String!, $price: Int!, $provider: String) {
+    addAward(content: $content, price: $price, provider: $provider) {
+      ...AwardData
+    }
+  }
+  ${AwardFragment.detail}
+`

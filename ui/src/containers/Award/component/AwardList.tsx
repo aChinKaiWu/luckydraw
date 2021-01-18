@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react'
-import { useQuery } from '@apollo/client'
-
+import { useMutation, useQuery } from '@apollo/client'
 import style from './AwardListStyle.scss'
 import logo from '../../../assets/access-logo.png'
 import AwardItem from './AwardItem'
-import { AWARD_LIST_QUERY } from '../../../query/award'
+import { ADD_AWARD, AWARD_LIST_QUERY } from '../../../query/award'
 import { CANDIDATE_LIST_QUERY } from '../../../query/candidates'
 import { AwardsList } from '../../../__generated__/AwardsList'
 import { CandidatesList } from '../../../__generated__/CandidatesList'
 import AwardDerived from './AwardDerived'
 import AwardCreation from './AwardCreation'
 import Loading from '@src/components/Loading'
+import { AwardCreationBody } from './AwardCreation'
 
 function AwardList() {
   const { data: awardsListData, loading } = useQuery<AwardsList>(AWARD_LIST_QUERY, { fetchPolicy: 'network-only' })
   const { data: candidatesListData } = useQuery<CandidatesList>(CANDIDATE_LIST_QUERY)
-
+  const [AddAward] = useMutation(ADD_AWARD)
   const awardsData: AwardDerived[] = useMemo(
     () =>
       awardsListData?.awards
@@ -45,7 +45,15 @@ function AwardList() {
           <Loading />
         ) : (
           <>
-            <AwardCreation />
+            <AwardCreation
+              onCreatAward={(data: AwardCreationBody) => {
+                AddAward({
+                  variables: {
+                    ...data
+                  }
+                })
+              }}
+            />
             {awardsData?.map((e) => e && <AwardItem key={e.id} award={e} />)}
           </>
         )}
