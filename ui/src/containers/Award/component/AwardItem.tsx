@@ -2,15 +2,15 @@ import React, { useContext } from 'react'
 
 import style from './AwardItemStyle.scss'
 import AwardContext from '../AwardContext'
-import { AwardData } from '../../../__generated__/AwardData'
+import AwardDerived from './AwardDerived'
 
 interface Props {
-  award: AwardData
+  award: AwardDerived
 }
 
 function AwardItem(props: Props) {
   const {
-    award: { content, price, winner, provider }
+    award: { content, price, winnerName, provider }
   } = props
   const { handleGetWinner } = useContext(AwardContext)
 
@@ -23,8 +23,8 @@ function AwardItem(props: Props) {
           {provider && <span className={style.provider}>From: {provider}</span>}
         </p>
       </div>
-      {winner ? (
-        <div className={style.winner}>{winner}</div>
+      {winnerName ? (
+        <div className={style.winner}>{winnerName}</div>
       ) : (
         <div className={style['winner--none']} onClick={() => handleGetWinner(props.award)}>
           抽 DRAW ガチャる
