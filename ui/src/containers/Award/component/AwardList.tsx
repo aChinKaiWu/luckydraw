@@ -17,7 +17,7 @@ function AwardList() {
     fetchPolicy: 'network-only'
   })
   const { data: candidatesListData } = useQuery<CandidatesList>(CANDIDATE_LIST_QUERY)
-  const [AddAward] = useMutation(ADD_AWARD, {
+  const [AddAward, { loading: addLoading }] = useMutation(ADD_AWARD, {
     onCompleted: () => {
       refetch()
       document.documentElement.scrollTop = document.documentElement.scrollHeight
@@ -49,7 +49,7 @@ function AwardList() {
         </h1>
       </div>
       <div className={style.content}>
-        {loading ? (
+        {loading || addLoading ? (
           <Loading />
         ) : (
           <>
