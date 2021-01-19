@@ -63,7 +63,7 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
   const [formValue, setFormValues] = React.useState<AwardCreationBody | null>(null)
   const [formErrors, setFormErrors] = React.useState<AwardCreationBody>({})
 
-  const onButtonClick = () => {
+  const onDonate = () => {
     if (!formValue) {
       setFormValues({})
       return
@@ -78,6 +78,11 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
     Object.values(AwardKey).forEach((key) => {
       if (formValue?.[key]) delete error[key]
     })
+
+    if (Object.values(error).length === Object.values(DEFAULT_ERROR).length) {
+      setFormValues(null)
+      return
+    }
 
     setFormErrors(error)
 
@@ -96,7 +101,7 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
         </div>
         <AwardForm values={formValue} errors={formErrors} onChange={setFormValues} />
       </div>
-      <div className={style.donateButton} onClick={onButtonClick}>
+      <div className={style.winner} onClick={onDonate}>
         捐 Donate 寄付
       </div>
     </div>

@@ -16,6 +16,7 @@ function AwardList() {
   const { data: awardsListData, loading } = useQuery<AwardsList>(AWARD_LIST_QUERY, { fetchPolicy: 'network-only' })
   const { data: candidatesListData } = useQuery<CandidatesList>(CANDIDATE_LIST_QUERY)
   const [AddAward] = useMutation(ADD_AWARD)
+
   const awardsData: AwardDerived[] = useMemo(
     () =>
       awardsListData?.awards
