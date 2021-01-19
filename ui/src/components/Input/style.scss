@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: $input-font-size;
-  padding: 5px 20px;
+  padding: 2px 20px;
   label {
     display: block;
   }
@@ -13,7 +13,6 @@
     display: block;
     width: $input-width;
     height: $input-height;
-    padding: 10px;
     border: none;
     border-radius: $input-border-radius;
     text-align: center;
@@ -27,7 +26,7 @@
 
 .error {
   text-align: start;
-  font-size: 14px;
+  font-size: $input-error-font-size;
   color: $error-color;
-  padding: 3px 0px 0px 5px;
+  padding: 1px 0px 0px $input-error-font-size;
 }
