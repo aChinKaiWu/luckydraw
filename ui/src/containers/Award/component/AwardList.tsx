@@ -13,9 +13,16 @@ import Loading from '@src/components/Loading'
 import { AwardCreationBody } from './AwardCreation'
 
 function AwardList() {
-  const { data: awardsListData, loading } = useQuery<AwardsList>(AWARD_LIST_QUERY, { fetchPolicy: 'network-only' })
+  const { data: awardsListData, loading, refetch } = useQuery<AwardsList>(AWARD_LIST_QUERY, {
+    fetchPolicy: 'network-only'
+  })
   const { data: candidatesListData } = useQuery<CandidatesList>(CANDIDATE_LIST_QUERY)
-  const [AddAward] = useMutation(ADD_AWARD)
+  const [AddAward] = useMutation(ADD_AWARD, {
+    onCompleted: () => {
+      refetch()
+      document.documentElement.scrollTop = document.documentElement.scrollHeight
+    }
+  })
 
   const awardsData: AwardDerived[] = useMemo(
     () =>

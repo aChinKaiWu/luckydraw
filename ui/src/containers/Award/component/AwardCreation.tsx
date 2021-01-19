@@ -88,6 +88,7 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
 
     if (Object.values(error).length === 0 && formValue) {
       onCreatAward(formValue)
+      setFormValues(null)
       return
     }
   }
@@ -101,7 +102,7 @@ export default function AwardCreation({ onCreatAward }: { onCreatAward: (data: A
         </div>
         <AwardForm values={formValue} errors={formErrors} onChange={setFormValues} />
       </div>
-      <div className={style.winner} onClick={onDonate}>
+      <div className={style.donateButton} onClick={onDonate}>
         捐 Donate 寄付
       </div>
     </div>

@@ -72,3 +72,8 @@
   @extend .donateContent;
   transform: rotateY(180deg);
 }
+
+.donateButton {
+  @extend .winner;
+  cursor: pointer;
+}
