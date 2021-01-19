@@ -19,6 +19,14 @@ const DEFAULT_ERROR: AwardCreationBody = {
   [AwardKey.Price]: 'Price Error'
 }
 
+const formatValue = (value: string | number) => {
+  if (value === '') return ''
+
+  if (!Number.isNaN(Number(value))) return Number(value)
+
+  return value
+}
+
 const AwardForm = ({
   values,
   errors,
@@ -28,23 +36,23 @@ const AwardForm = ({
   errors: AwardCreationBody
   onChange: (data: AwardCreationBody) => void
 }) => {
-  const handleChange = (name: string, value: any) => onChange({ ...values, [name]: value })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const name = e.target.name
+    const value = formatValue(e.target.value)
+
+    onChange({ ...values, [name]: value })
+  }
 
   return (
     <div className={style.donateForm}>
       <form>
-        <Input
-          name={AwardKey.Provider}
-          label='乾爹乾媽'
-          value={values?.[AwardKey.Provider]}
-          onChange={(e) => handleChange(e.target.name, e.target.value)}
-        />
+        <Input name={AwardKey.Provider} label='乾爹乾媽' value={values?.[AwardKey.Provider]} onChange={handleChange} />
         <Input
           name={AwardKey.Content}
           value={values?.[AwardKey.Content]}
           label='乾爹乾媽ㄉ心意'
           error={errors[AwardKey.Content]}
-          onChange={(e) => handleChange(e.target.name, e.target.value)}
+          onChange={handleChange}
         />
         <Input
           name={AwardKey.Price}
@@ -52,7 +60,7 @@ const AwardForm = ({
           label='お金'
           type='number'
           error={errors[AwardKey.Price] as string}
-          onChange={(e) => handleChange(e.target.name, Number(e.target.value))}
+          onChange={handleChange}
         />
       </form>
     </div>
