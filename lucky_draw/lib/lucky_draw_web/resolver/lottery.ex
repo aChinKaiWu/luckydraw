@@ -16,9 +16,11 @@ defmodule LuckyDrawWeb.Resolver.Lottery do
   end
 
   def delete_award(_, %{id: id}, _) do
-    id
-    |> Lottery.get_award!()
-    |> Lottery.delete_award()
+    award = Lottery.get_award!(id)
+
+    set_candidate_not_winner_if_exist(award)
+
+    Lottery.delete_award(award)
   end
 
   def list_candidates(_, _, _) do
@@ -42,10 +44,17 @@ defmodule LuckyDrawWeb.Resolver.Lottery do
   def give_up_award(_, %{award_id: id}, _) do
     award = Lottery.get_award!(id)
 
-    Lottery.get_candidate!(award.winner)
-    |> Lottery.update_candidate(%{is_winner: false})
+    set_candidate_not_winner_if_exist(award)
 
     award
     |> Lottery.update_award(%{winner: nil})
+  end
+
+  defp set_candidate_not_winner_if_exist(award) do
+    if award.winner do
+      award.winner
+      |> Lottery.get_candidate!()
+      |> Lottery.update_candidate(%{is_winner: false})
+    end
   end
 end
