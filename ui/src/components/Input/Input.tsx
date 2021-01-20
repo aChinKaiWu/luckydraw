@@ -26,7 +26,7 @@ export default function Input({
     <div className={style.inputContainer}>
       {label && <label>{label}</label>}
       <div className={style.input}>
-        <input name={name} type={type} value={value || ''} onChange={(e) => onChange(e)} placeholder={placeholder} />
+        <input name={name} type={type} value={value || ''} onChange={onChange} placeholder={placeholder} />
         {error && <div className={style.error}>{error}</div>}
       </div>
     </div>
