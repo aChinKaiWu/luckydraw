@@ -6,6 +6,7 @@
   background-color: $buttermilk;
   font-family: $fontFamily;
   min-height: 100vh;
+  position: relative;
 }
 
 .header {
@@ -21,4 +22,25 @@
 
 .logo {
   height: 1.2em;
+}
+
+.decoration {
+  position: fixed;
+  right: 0;
+  bottom: 50%;
+  max-width: 400px;
+  transform: translateY(40%);
+  animation: moving infinite 5s;
+}
+
+@keyframes moving {
+  0% {
+    transform: translateY(40%);
+  }
+  50% {
+    transform: translateY(60%);
+  }
+  100% {
+    transform: translateY(40%);
+  }
 }

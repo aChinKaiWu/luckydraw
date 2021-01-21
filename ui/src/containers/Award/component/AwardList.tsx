@@ -11,6 +11,7 @@ import AwardDerived from './AwardDerived'
 import AwardCreation from './AwardCreation'
 import Loading from '@src/components/Loading'
 import { AwardCreationBody } from './AwardCreation'
+import CatImg from '@src/assets/lovely-cat.png'
 
 function AwardList() {
   const { data: awardsListData, loading, refetch } = useQuery<AwardsList>(AWARD_LIST_QUERY, {
@@ -66,6 +67,7 @@ function AwardList() {
           </>
         )}
       </div>
+      <img src={CatImg} className={style.decoration} alt='fortunate cat' />
     </div>
   )
 }
