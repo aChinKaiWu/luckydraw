@@ -44,3 +44,22 @@
     transform: translateY(40%);
   }
 }
+
+.viewChange {
+  &:before {
+    content: 'view change';
+  }
+  text-align: center;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  cursor: pointer;
+  background-color: #1d3051;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  line-height: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-weight: 600;
+}

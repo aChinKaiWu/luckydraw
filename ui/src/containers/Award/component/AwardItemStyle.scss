@@ -88,3 +88,18 @@
   cursor: pointer;
   margin: auto;
 }
+
+.containerCompact {
+  @extend .container;
+  margin: auto;
+}
+
+.prizeCompact {
+  @extend .prize;
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 8px;
+  > p {
+    margin: auto;
+  }
+}
