@@ -17,9 +17,9 @@ import routes from '../../constants/routes'
 import sound from '../../assets/drawer01.m4a'
 import AudioPlayer, { AudioMimeTypes } from '../../components/AudioPlayer'
 
-const ANIMATION_TIME = 10000
+const ANIMATION_TIME = 5000
 const HALF_LIFE = ANIMATION_TIME / 2
-const ANIMATION_SPEED_NUMBER = 250
+const ANIMATION_SPEED_NUMBER = ANIMATION_TIME / 40
 
 const MEMBERS = [
   'Chin-Kai Wu',
